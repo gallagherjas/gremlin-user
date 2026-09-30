@@ -1,0 +1,42 @@
+name: New Gremlin scenario
+description: Propose a user behavior that exposes a distinct application failure mode.
+title: "[gremlin] "
+labels:
+  - gremlin-scenario
+body:
+  - type: input
+    id: invariant
+    attributes:
+      label: Invariant
+      description: State the product rule this scenario tries to break.
+      placeholder: One purchase intent creates one order.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: User behavior
+      description: Describe the user actions and timing.
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: Failure mode
+      description: Describe the defect this behavior can expose.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Confirmation evidence
+      description: List the evidence needed to confirm the defect.
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safe test boundary
+      description: State the test data, sandbox, stub, or other boundary needed for safe execution.
+    validations:
+      required: true
