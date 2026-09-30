@@ -39,18 +39,11 @@ gremlin-user/
 ├── examples/
 │   ├── crud-app.md
 │   └── checkout.md
-├── scripts/
-│   └── gremlin_score.py
-└── tests/
-    └── test_gremlin_score.py
+└── examples/
+    ├── crud-app.md
+    └── checkout.md
 ```
 
 ## Pull requests
 
 Update `references/gremlin-catalog.md` when you add a new behavior class. Add an example when the scenario needs more context than the catalog entry can hold.
-
-Run the score helper tests before opening a pull request:
-
-```bash
-python -m unittest discover -s tests -q
-```

@@ -1,6 +1,5 @@
 # 👹 Gremlin User
 
-[![CI](https://github.com/gallagherjas/gremlin-user/actions/workflows/ci.yml/badge.svg)](https://github.com/gallagherjas/gremlin-user/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 [English](README.md) | [简体中文](README.zh-CN.md)
@@ -108,18 +107,7 @@ Gremlin User 不乱点一气。每个 Gremlin 都是一个命名的失败假设�
 score = passed / (passed + failed) * 100
 ```
 
-被阻塞（blocked）与不确定（inconclusive）的场景不计入分母。运行辅助脚本：
-
-```bash
-python scripts/gremlin_score.py --passed 28 --failed 6 --blocked 3
-```
-
-```text
-Gremlin Score: 82/100
-Passed: 28
-Failed: 6
-Blocked or inconclusive: 3
-```
+被阻塞（blocked）与不确定（inconclusive）的场景不计入分母。例如 28 个通过、6 个失败，得分 82。
 
 把这个分数当作本次运行的摘要，而不是产品质量评分。
 

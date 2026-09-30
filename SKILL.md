@@ -48,8 +48,6 @@ If browser automation is unavailable, produce a Gremlin test plan from the code 
 
 ## Gremlin Score
 
-Use `scripts/gremlin_score.py` when Python is available.
-
 Calculate the score from executed scenario outcomes:
 
 `score = passed / (passed + failed) * 100`

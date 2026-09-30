@@ -1,6 +1,5 @@
 # 👹 Gremlin User
 
-[![CI](https://github.com/gallagherjas/gremlin-user/actions/workflows/ci.yml/badge.svg)](https://github.com/gallagherjas/gremlin-user/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 [English](README.md) | [简体中文](README.zh-CN.md)
@@ -108,18 +107,7 @@ Each run is summarized by a score over executed scenarios:
 score = passed / (passed + failed) * 100
 ```
 
-Blocked and inconclusive scenarios stay outside the denominator. Run the helper:
-
-```bash
-python scripts/gremlin_score.py --passed 28 --failed 6 --blocked 3
-```
-
-```text
-Gremlin Score: 82/100
-Passed: 28
-Failed: 6
-Blocked or inconclusive: 3
-```
+Blocked and inconclusive scenarios stay outside the denominator. For example, 28 passed and 6 failed yield a score of 82.
 
 Treat the score as a summary of that run, not a product rating.
 
