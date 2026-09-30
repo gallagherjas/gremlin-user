@@ -3,6 +3,8 @@
 [![CI](https://github.com/gallagherjas/gremlin-user/actions/workflows/ci.yml/badge.svg)](https://github.com/gallagherjas/gremlin-user/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 A coding-agent skill for testing web apps through plausible user misuse, interruption, stale state, and duplicate actions.
 
 Normal UI tests follow the intended path. Real users don't. Gremlin User adds the behavior users bring to real software: repeated clicks, stale tabs, expired sessions, odd input, interrupted requests, and competing edits.
