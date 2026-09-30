@@ -35,6 +35,8 @@ Do not chase scenario count. Add a scenario when it tests a new invariant or fai
 
 ## Modes
 
+Default to Mild unless the user selects another mode. Higher intensity changes scenario selection, not authorization or the safety boundary.
+
 ### Mild
 
 Use common edge cases with low mutation risk. Favor form boundaries, refresh, duplicate clicks, and stale navigation.

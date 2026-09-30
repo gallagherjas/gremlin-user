@@ -8,6 +8,8 @@ Use local, preview, staging, sandbox, or dedicated test environments for mutatio
 
 Use test accounts, fixture data, test payment methods, and stubbed integrations when the project provides them.
 
+Reuse the project's fixture and cleanup mechanisms. Keep baseline, scenario, and reproduction data isolated. Restore only state created or changed by the test, including network interception and session settings, even after failure. Report cleanup failures and residual test state.
+
 ## Stop before these actions without an authorized test path
 
 - Real payment or financial transfer

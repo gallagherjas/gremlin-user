@@ -1,6 +1,6 @@
 ---
 name: gremlin-user
-description: Gremlin-style testing of web application flows for bugs caused by duplicate actions, interrupted requests, stale tabs, session expiry, odd input, and concurrent edits. Use when stress-testing UI behavior, checking stateful CRUD or checkout flows, reproducing edge cases, or adding regression coverage after a bug.
+description: Test web application flows for defects caused by duplicate actions, interrupted requests, stale tabs, session expiry, odd input, and concurrent edits. Use for targeted misuse testing, reproducing these edge cases, or adding regression coverage for these failure modes.
 license: MIT
 ---
 
@@ -21,14 +21,14 @@ Use local, preview, staging, or dedicated test environments for mutation. Use te
 ## Workflow
 
 1. **Map the flow.** Identify the user goal, entry point, state changes, external side effects, and success signal.
-2. **Run the happy path.** Confirm the intended flow works before adding stress. Record any baseline failure and stop testing that flow until the baseline works.
-3. **Choose Gremlins.** Read `references/scenario-selection.md` and `references/gremlin-catalog.md`. Pick scenarios that match the flow's state and risks, and apply the requested intensity mode: Mild, Spicy, or Unhinged.
-4. **Change one condition.** Keep the path stable while one Gremlin changes timing, input, navigation, network, session, or concurrency.
+2. **Check the baseline.** Run the happy path. Record and verify any baseline failure; pause only scenarios that depend on it. Continue requested reproduction and independent scenarios.
+3. **Choose Gremlins.** Read `references/scenario-selection.md` and `references/gremlin-catalog.md`. Pick scenarios that match the flow's state and risks. Default to Mild unless the user selects Spicy or Unhinged; intensity does not expand permissions.
+4. **Apply the condition.** Use independent fixtures or restore equivalent starting state for the baseline, each scenario, and each reproduction. Keep the path stable while the selected Gremlin changes it, and verify the intended condition actually occurred.
 5. **Capture evidence.** Record steps, screenshots, console output, network traces, server logs, and affected records when the tools expose them.
 6. **Confirm the defect.** Follow `references/verification.md`. Reproduce the result and separate product defects from automation noise.
 7. **Classify impact.** Use `references/severity.md`.
-8. **Add regression coverage.** Use the project's test stack. Prefer Playwright for browser behavior when the project already uses it or can run it without changing product code.
-9. **Report.** Use `assets/report-template.md`. Keep each report reproducible and specific.
+8. **Add regression coverage when in scope.** Follow `assets/regression-test-template.md` and the project's test conventions. Report test execution results and identify tests that still fail because the defect is unfixed; use the project's expected-failure convention when available.
+9. **Restore and report.** Restore test-created network interception, session settings, and fixture state, including on failure. Use `assets/report-template.md`; deliver the requested report, plan, or tests without expanding scope.
 
 ## Testing rules
 
@@ -52,7 +52,7 @@ Calculate the score from executed scenario outcomes:
 
 `score = passed / (passed + failed) * 100`
 
-Count a scenario as passed when the app preserves the expected invariant. Count a scenario as failed when a confirmed defect breaks that invariant. Exclude blocked and inconclusive scenarios from the denominator. Report the counts with the score.
+Count a scenario as passed only when the intended condition occurred and the app preserved the expected invariant after relevant processing completed. Count a scenario as failed when a confirmed defect breaks that invariant. Exclude blocked and inconclusive scenarios from the denominator. Count each distinct scenario once; reproduction attempts do not add outcomes. Report passed, failed, blocked, and inconclusive counts before the score. If passed + failed is zero, report N/A.
 
 Treat the score as a summary of the tested scenarios, not a measure of overall product quality.
 

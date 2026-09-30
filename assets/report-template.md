@@ -9,8 +9,10 @@
 - Scenarios executed:
 - Passed:
 - Failed:
-- Blocked or inconclusive:
-- Gremlin Score:
+- Blocked:
+- Inconclusive:
+- Gremlin Score (N/A when passed + failed is zero; count each distinct scenario once):
+- Cleanup result and residual test state:
 
 ## Confirmed defects
 
@@ -22,7 +24,10 @@
 
 **Preconditions:**
 
+**Condition injection evidence:**
+
 **Steps:**
+
 1.
 2.
 
@@ -30,19 +35,23 @@
 
 **Observed:**
 
+**Processing completion evidence:**
+
 **Evidence:**
 
 **Likely cause:**
 
 **Affected code:**
 
-**Regression coverage:**
+**Regression coverage and execution result (including unfixed failures):**
 
 **Suggested fix:**
 
 ## Survived scenarios
 
 Record the high-value scenarios that preserved their invariants.
+
+Include evidence that the intended condition occurred and relevant processing completed; link observations to the scenario's fixture or business intent.
 
 ## Blocked or inconclusive
 

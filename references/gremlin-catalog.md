@@ -17,6 +17,8 @@ Scenarios need different tool capabilities. Match the execution path to what the
 
 Execution rule: when the available browser tool cannot produce a condition, do not skip the scenario silently or report it as run. Execute it with a scripted browser session — Playwright when the project already uses it or can run it without changing product code. If no execution path exists, mark the scenario blocked and include it in the Gremlin test plan.
 
+Tool capability alone does not prove the condition occurred. Verify the targeted request was affected, the session was actually invalidated, or the competing writes used the intended state. Follow [Defect Verification](verification.md) before classifying the outcome.
+
 ## Click Gremlin
 
 Targets duplicate actions and weak pending-state controls.
@@ -80,7 +82,7 @@ Targets retries, timeouts, offline recovery, and uncertain server state.
 
 Scenarios:
 
-- Drop the network after submit but before the response reaches the browser.
+- Drop the network after submit but before the response reaches the browser. To test a lost response after commit, confirm the server committed the operation while its success response was withheld from the client.
 - Restore the network after a timeout.
 - Delay a response past the UI's normal loading window.
 - Return a controlled 4xx or 5xx response from a test stub.

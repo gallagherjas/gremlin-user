@@ -9,8 +9,10 @@ Include:
 - The invariant under test
 - Preconditions and fixture state
 - User actions
+- Evidence that the intended condition occurred and relevant processing completed
 - Evidence needed to confirm failure
 - Safe environment constraints
+- Fixture isolation and cleanup
 
 Keep the scenario focused. Split unrelated failure modes into separate contributions.
 
@@ -36,9 +38,6 @@ gremlin-user/
 ├── assets/
 │   ├── report-template.md
 │   └── regression-test-template.md
-├── examples/
-│   ├── crud-app.md
-│   └── checkout.md
 └── examples/
     ├── crud-app.md
     └── checkout.md

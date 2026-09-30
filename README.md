@@ -8,7 +8,7 @@ A coding-agent skill for testing web apps through plausible user misuse, interru
 
 Normal UI tests follow the intended path. Real users don't. Gremlin User adds the behavior users bring to real software: repeated clicks, stale tabs, expired sessions, odd input, interrupted requests, and competing edits.
 
-The agent confirms each failure, collects evidence, and writes regression tests for confirmed defects.
+The agent confirms each failure, collects evidence, and adds regression tests when they are part of the requested scope.
 
 ## Example
 
@@ -16,10 +16,11 @@ A checkout test can pass with one click and a clean network. Gremlin User runs t
 
 ```text
 Submit order
-Connection drops after request leaves the browser
-Server may commit the order
+Server commits the order; success response is withheld
+Verify the commit and missing client response
 Connection returns
 User retries
+Wait for processing to complete; inspect final orders and charges
 ```
 
 A useful result looks like this:
@@ -41,9 +42,9 @@ Full walkthroughs: [`examples/checkout.md`](examples/checkout.md) and [`examples
 Gremlin User does not click at random. Each Gremlin is a named failure hypothesis selected from the flow's state changes.
 
 1. Map the flow and write the invariants it must preserve — one purchase intent creates one order; a stale editor cannot silently overwrite a newer version.
-2. Run the happy path, then change one condition at a time: timing, input, navigation, network, session, or concurrency.
-3. Reproduce every suspected defect and separate product bugs from automation noise before reporting.
-4. Add regression tests for confirmed defects, in the project's existing test stack.
+2. Check the happy path, then change one condition at a time using independent fixtures or equivalent restored state. A baseline failure pauses only dependent scenarios; requested reproduction and independent scenarios can continue.
+3. Verify the intended condition occurred, wait for relevant processing to complete, and reproduce suspected defects before reporting. Restore test-created state even after failure.
+4. Deliver the requested report, plan, or regression tests. Use the project's existing test stack and report execution results, including failures caused by unfixed defects.
 
 ## Gremlins
 
@@ -66,6 +67,8 @@ Full scenario library: [`references/gremlin-catalog.md`](references/gremlin-cata
 | Mild | Common edge cases with low mutation risk |
 | Spicy | Network interruption, session expiry, competing tabs, and controlled server errors |
 | Unhinged | Two realistic conditions combined, after each condition passes alone; keeps a clear failure hypothesis inside the test boundary |
+
+Mild is the default. Higher intensity does not expand permissions or the safety boundary.
 
 ## Installation
 
@@ -97,7 +100,7 @@ Gremlin-test auth and session expiry in staging. Do not send real email.
 Run Spicy mode against this checkout flow with the payment sandbox.
 ```
 
-The agent runs the happy path, selects Gremlins that match the flow, confirms each suspected defect, and writes regression coverage when the project can support it. Without browser automation it produces an executable Gremlin test plan instead of claiming unexecuted results.
+The agent checks the baseline, selects Gremlins that match the flow, and confirms suspected defects. It adds regression coverage when in scope and the project can support it. Without browser automation it produces an executable Gremlin test plan instead of claiming unexecuted results.
 
 ## Gremlin Score
 
@@ -107,7 +110,7 @@ Each run is summarized by a score over executed scenarios:
 score = passed / (passed + failed) * 100
 ```
 
-Blocked and inconclusive scenarios stay outside the denominator. For example, 28 passed and 6 failed yield a score of 82.
+Report passed, failed, blocked, and inconclusive counts before the score. Blocked and inconclusive scenarios stay outside the denominator; reproduction attempts do not count as additional scenarios. If passed + failed is zero, the score is N/A. For example, 28 passed and 6 failed yield a score of 82.
 
 Treat the score as a summary of that run, not a product rating.
 
@@ -125,7 +128,7 @@ Unleashing misbehaving users on an app has a long history, most notably [gremlin
 
 ## Contributing
 
-A good Gremlin names the invariant it attacks, the steps, and the evidence needed to confirm the defect. See [CONTRIBUTING.md](CONTRIBUTING.md) for the requirements, the repository layout, and the test command.
+A good Gremlin names the invariant it attacks, the steps, and the evidence needed to confirm the defect. See [CONTRIBUTING.md](CONTRIBUTING.md) for the requirements and repository layout.
 
 ## License
 

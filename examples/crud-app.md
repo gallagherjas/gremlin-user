@@ -13,10 +13,11 @@ Invariant: a stale editor cannot overwrite a newer value without the product's d
 
 ## Gremlin scenario
 
-1. Open the same customer in Tab A and Tab B.
+1. Use a fresh fixture customer, separate from the baseline. Open it in Tab A and Tab B and confirm both loaded the same initial version or values.
 2. In Tab A, change the phone field and save.
 3. In Tab B, change the phone field to another value and save.
-4. Reload both tabs.
+4. Wait for both saves and relevant background processing to complete, then reload both tabs and inspect the final stored value.
+5. Reproduce from equivalent fresh state and restore test-created fixture state even after failure; report any cleanup failure.
 
 ## Evidence to capture
 
@@ -24,6 +25,7 @@ Invariant: a stale editor cannot overwrite a newer value without the product's d
 - Version or `updated_at` values when exposed
 - Final stored value
 - Conflict UI, if present
+- Evidence of both editors' starting state and save completion
 
 ## Result examples
 
