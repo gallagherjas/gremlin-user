@@ -42,7 +42,7 @@ Use local, preview, staging, or dedicated test environments for mutation. Use te
 
 ## Browser access
 
-If browser automation is available, execute the scenarios and collect evidence.
+If browser automation is available, execute the scenarios and collect evidence. Match each condition to the tool's capability map in `references/gremlin-catalog.md`. When a click-only tool cannot produce a condition such as a dropped response or an expired session, execute the scenario with a scripted browser session instead of skipping it or reporting it as run.
 
 If browser automation is unavailable, produce a Gremlin test plan from the code and identify the exact flows, selectors or routes, state transitions, and assertions a browser test should cover. Do not claim that unexecuted scenarios passed or failed.
 

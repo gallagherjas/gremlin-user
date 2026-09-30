@@ -2,6 +2,21 @@
 
 Choose Gremlins that match the flow. A good scenario targets one invariant and changes one condition.
 
+## Capability map
+
+Scenarios need different tool capabilities. Match the execution path to what the tool provides instead of skipping a scenario silently.
+
+| Condition to produce | Capability needed |
+| --- | --- |
+| Duplicate clicks, Enter plus click, reopened dialog | Any browser tool |
+| Refresh, Back/Forward, second tab, stale deep link | Any browser tool |
+| Odd input, boundary values, long paste | Any browser tool |
+| Dropped or delayed response, stubbed 4xx/5xx or malformed data | Request interception or throttling, such as Playwright route handling |
+| Session expiry, cross-tab logout, role change | Cookie or storage access, an auth API, or controllable session lifetime |
+| Competing users or tabs | Multiple browser contexts or two test accounts |
+
+Execution rule: when the available browser tool cannot produce a condition, do not skip the scenario silently or report it as run. Execute it with a scripted browser session — Playwright when the project already uses it or can run it without changing product code. If no execution path exists, mark the scenario blocked and include it in the Gremlin test plan.
+
 ## Click Gremlin
 
 Targets duplicate actions and weak pending-state controls.
