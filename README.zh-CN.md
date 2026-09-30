@@ -69,7 +69,7 @@ Gremlin User 不乱点一气。每个 Gremlin 都是一个命名的失败假设�
 
 ## 安装
 
-适用于任何支持开放 Agent Skills `SKILL.md` 格式的智能体客户端。浏览器自动化与 Python 均为可选项。
+适用于任何支持开放 Agent Skills `SKILL.md` 格式的智能体客户端。浏览器自动化为可选项。
 
 本仓库根目录就是 skill 目录：把它克隆（或下载解压）为 `gremlin-user`，放进你的智能体客户端能发现的 skills 目录即可。
 
@@ -79,7 +79,7 @@ Gremlin User 不乱点一气。每个 Gremlin 都是一个命名的失败假设�
 | Codex | `.codex/skills/gremlin-user/` |
 | 其他客户端 | 见你的客户端的 skills 目录 |
 
-保持文件夹完整、`SKILL.md` 位于根目录。`tests/`、CI 配置等仓库附带文件无害——智能体只读 `SKILL.md` 及其引用的文件。
+保持文件夹完整、`SKILL.md` 位于根目录。README、CONTRIBUTING 等仓库附带文件无害——智能体只读 `SKILL.md` 及其引用的文件。
 
 ## 使用
 

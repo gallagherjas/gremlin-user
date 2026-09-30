@@ -69,7 +69,7 @@ Full scenario library: [`references/gremlin-catalog.md`](references/gremlin-cata
 
 ## Installation
 
-Works with any agent that supports the open Agent Skills `SKILL.md` format. Browser automation and Python are optional.
+Works with any agent that supports the open Agent Skills `SKILL.md` format. Browser automation is optional.
 
 The repository root is the skill directory: clone it (or download and extract it) as `gremlin-user` into the skills location your agent discovers.
 
@@ -79,7 +79,7 @@ The repository root is the skill directory: clone it (or download and extract it
 | Codex | `.codex/skills/gremlin-user/` |
 | Other clients | Your client's skills directory |
 
-Keep the folder intact with `SKILL.md` at its root. Extra repository files such as `tests/` and CI config are harmless; agents only read `SKILL.md` and the files it references.
+Keep the folder intact with `SKILL.md` at its root. Repository files such as README and CONTRIBUTING ride along harmlessly; agents only read `SKILL.md` and the files it references.
 
 ## Usage
 
